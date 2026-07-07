@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+MAVEN_PROJECTBASEDir="$(cd "$(dirname "$0")" && pwd)"
+exec "${MAVEN_PROJECTBASEDir}/.mvn/wrapper/maven-wrapper.jar" "$@"

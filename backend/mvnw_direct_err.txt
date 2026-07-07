@@ -1,0 +1,6 @@
+Exception in thread "main" java.lang.RuntimeException: Base: GRADLE_USER_HOME is unknown
+	at org.apache.maven.wrapper.PathAssembler.getBaseDir(PathAssembler.java:91)
+	at org.apache.maven.wrapper.PathAssembler.getDistribution(PathAssembler.java:47)
+	at org.apache.maven.wrapper.Installer.createDist(Installer.java:64)
+	at org.apache.maven.wrapper.WrapperExecutor.execute(WrapperExecutor.java:121)
+	at org.apache.maven.wrapper.MavenWrapperMain.main(MavenWrapperMain.java:61)

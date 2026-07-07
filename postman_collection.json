@@ -1,0 +1,169 @@
+{
+  "info": {
+    "name": "Fund Transfer System API",
+    "description": "Collection for Fund Transfer System backend APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"API Tester A\",\n  \"email\": \"apitester.a@example.com\",\n  \"password\": \"Password123!\",\n  \"phone\": \"9000000001\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/register",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"apitester.a@example.com\",\n  \"password\": \"Password123!\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get Account Balance",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/account/{{accountId}}/balance",
+          "host": ["{{base_url}}"],
+          "path": ["account", "{{accountId}}", "balance"]
+        }
+      }
+    },
+    {
+      "name": "Deposit Funds",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"accountId\": {{accountId}},\n  \"amount\": 10000\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/account/deposit",
+          "host": ["{{base_url}}"],
+          "path": ["account", "deposit"]
+        }
+      }
+    },
+    {
+      "name": "Withdraw Funds",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"accountId\": {{accountId}},\n  \"amount\": 500\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/account/withdraw",
+          "host": ["{{base_url}}"],
+          "path": ["account", "withdraw"]
+        }
+      }
+    },
+    {
+      "name": "Add Beneficiary",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"accountId\": {{accountId}},\n  \"beneficiaryName\": \"Recipient B\",\n  \"beneficiaryAccountNumber\": \"FTS12345678901234\",\n  \"bankName\": \"Bank B\",\n  \"ifsc\": \"IFSC0001\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/beneficiaries",
+          "host": ["{{base_url}}"],
+          "path": ["beneficiaries"]
+        }
+      }
+    },
+    {
+      "name": "List Beneficiaries",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/beneficiaries?accountId={{accountId}}",
+          "host": ["{{base_url}}"],
+          "path": ["beneficiaries"],
+          "query": [
+            { "key": "accountId", "value": "{{accountId}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Transfer Funds",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"senderAccount\": \"{{accountNumber}}\",\n  \"receiverAccount\": \"FTS12345678901234\",\n  \"amount\": 1000,\n  \"remarks\": \"Test transfer\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/transfer",
+          "host": ["{{base_url}}"],
+          "path": ["transfer"]
+        }
+      }
+    },
+    {
+      "name": "Get Account Transactions",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/transactions/account/{{accountId}}",
+          "host": ["{{base_url}}"],
+          "path": ["transactions", "account", "{{accountId}}"]
+        }
+      }
+    }
+  ]
+}
