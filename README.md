@@ -1,4 +1,4 @@
-# Fund Transfer System
+# Online_Banking_And_Fund_Transfer_System
 
 A full-stack banking demo with Spring Boot backend and React/Vite frontend.
 
